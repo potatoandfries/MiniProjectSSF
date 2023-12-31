@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:model="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holiday Planner</title>
+</head>
+<body>
+    <h1>Holiday Planner</h1>
+    
+    <form th:action="@{/start/submit}" method="POST" th:object="${holidayDates}">
+        <div>
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId" name="userId" th:field="*{userId}" required>
+        </div>
+        <div>
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" th:field="*{startDate}" th:type="date" th:format="'yyyy-MM-dd'" required>
+        </div>
+        <div>
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" th:field="*{endDate}" th:type="date" th:format="'yyyy-MM-dd'" required>
+        </div>
+        <br/>
+        <div>
+            <button type="submit">Upload Date</button>
+        </div>
+    </form>
+</body>
+</html>

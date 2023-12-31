@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+    <h1>Checker Page</h1>
+
+    <h2>All Holiday Dates</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+        </thead>
+        <tbody th:each="holidayDates : ${holidayDatesList}">
+            <tr>
+                <td th:text="${holidayDates.userId}"></td>
+                <td th:text="${holidayDates.startDate}"></td>
+                <td th:text="${holidayDates.endDate}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br/>
+
+    <h2>Overlapping Dates</h2>
+    <table border="1" th:if="${not #lists.isEmpty(overlappingDates)}">
+        <thead>
+            <tr>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Use th:each to iterate and th:if to check for the first iteration -->
+            <tr th:each="overlappingDate, iterStat : ${overlappingDates}" th:if="${iterStat.index == 0}">
+                <td th:text="${overlappingDate.startDate}"></td>
+                <td th:text="${overlappingDate.endDate}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+
+    <a th:href="@{/return-to-main}"><button>Return to Main Page</button></a>
+    <a th:href="@{/add-holiday}"><button>Add Holiday</button></a>
+</body>
+</html>
