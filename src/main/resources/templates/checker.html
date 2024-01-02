@@ -1,49 +1,121 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-</head>
-<body>
-    <h1>Checker Page</h1>
+  <head>
+    <!-- Add Bootstrap CSS Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        padding: 20px;
+      }
 
-    <h2>All Holiday Dates</h2>
-    <table border="1">
+      .page-container {
+        max-width: 800px;
+        margin: auto;
+        border: 1px solid #e1e1e1;
+        border-radius: 10px;
+        padding: 30px;
+        margin-top: 50px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1.display-4 {
+        color: #007bff;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        margin-top: 30px;
+        color: #333;
+      }
+
+      table {
+        margin-top: 20px;
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #ccc;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #007bff;
+        color: #fff;
+      }
+
+      tbody tr:hover {
+        background-color: #f5f5f5;
+      }
+
+      .btn-container {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .btn-container a {
+        margin: 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container page-container">
+      <h1 class="display-4">Checker Page</h1>
+      <!-- All Holiday Dates Table -->
+      <h2>All Holiday Dates</h2>
+      <table class="table table-bordered">
         <thead>
-            <tr>
-                <th>User ID</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-            </tr>
+          <tr>
+            <th>User ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+          </tr>
         </thead>
         <tbody th:each="holidayDates : ${holidayDatesList}">
-            <tr>
-                <td th:text="${holidayDates.userId}"></td>
-                <td th:text="${holidayDates.startDate}"></td>
-                <td th:text="${holidayDates.endDate}"></td>
-            </tr>
+          <tr>
+            <td th:text="${holidayDates.userId}"></td>
+            <td th:text="${holidayDates.startDate}"></td>
+            <td th:text="${holidayDates.endDate}"></td>
+          </tr>
         </tbody>
-    </table>
+      </table>
 
-    <br/>
-
-    <h2>Overlapping Dates</h2>
-    <table border="1" th:if="${not #lists.isEmpty(overlappingDates)}">
+      <!-- Overlapping Dates Table -->
+      <h2>Overlapping Dates</h2>
+      <table class="table table-bordered" th:if="${not #lists.isEmpty(overlappingDates)}">
         <thead>
-            <tr>
-                <th>Start Date</th>
-                <th>End Date</th>
-            </tr>
+          <tr>
+            <th>Start Date</th>
+            <th>End Date</th>
+          </tr>
         </thead>
         <tbody>
-            <!-- Use th:each to iterate and th:if to check for the first iteration -->
-            <tr th:each="overlappingDate, iterStat : ${overlappingDates}" th:if="${iterStat.index == 0}">
-                <td th:text="${overlappingDate.startDate}"></td>
-                <td th:text="${overlappingDate.endDate}"></td>
-            </tr>
+          <!-- Use th:each to iterate and th:if to check for the first iteration -->
+          <tr th:each="overlappingDate, iterStat : ${overlappingDates}" th:if="${iterStat.index == 0}">
+            <td th:text="${overlappingDate.startDate}"></td>
+            <td th:text="${overlappingDate.endDate}"></td>
+          </tr>
         </tbody>
-    </table>
-    <br/>
+      </table>
 
-    <a th:href="@{/return-to-main}"><button>Return to Main Page</button></a>
-    <a th:href="@{/add-holiday}"><button>Add Holiday</button></a>
-</body>
+     
+      <div class="button-group" style="text-align:center; margin-top:20px;">
+        <a th:href="@{/return-to-main}"><button class="btn btn-primary">Return to Main Page</button></a>
+        <a th:href="/login"><button class="btn btn-secondary">Add With Google Login</button></a>
+        <a th:href="/addHolidayToGoogle"><button class="btn btn-success">Add Holiday To Google</button></a>
+      </div>
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

@@ -19,6 +19,7 @@ public class HolidayService {
 
     @Autowired
     private RedisHolidayRepository repo;
+    
 
     @Autowired
     @Qualifier(Utils.BEAN_REDIS)
@@ -95,6 +96,5 @@ public class HolidayService {
     public List<HolidayDates> getUserHolidays(String userId) {
         return repo.findByUserId(userId);
     }
-
 }
     

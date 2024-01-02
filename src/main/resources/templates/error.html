@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f8f9fa;
+        color: #495057;
+        text-align: center;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .error-container {
+        max-width: 400px;
+        padding: 20px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-right: 20px; /* Adjust margin as needed */
+      }
+
+      h1 {
+        color: #dc3545;
+        margin-bottom: 20px;
+      }
+
+      p {
+        margin-bottom: 20px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* 404 page styles */
+      .page_404 {
+        padding: 40px 0;
+        background: #fff;
+        font-family: "Arvo", serif;
+        max-width: 800px; /* Adjust max-width as needed */
+        margin-left: 20px; /* Adjust margin as needed */
+      }
+
+      .page_404 img {
+        width: 100%;
+      }
+
+      .four_zero_four_bg {
+        background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+        height: 400px;
+        background-position: center;
+      }
+
+      /* .four_zero_four_bg h1 {
+        font-size: 80px;
+        color: #fff;
+      }
+
+      .four_zero_four_bg h3 {
+        font-size: 80px;
+        color: #fff;
+      } */
+
+      .four_zero_four_bg h1,
+      .four_zero_four_bg h3 {
+        font-size: 80px;
+        color: #dc3545; /* Adjust color as needed */
+      }
+
+      .link_404 {
+        color: #fff !important;
+        padding: 10px 20px;
+        background: #39ac31;
+        margin: 20px 0;
+        display: inline-block;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+      .contant_box_404 {
+        margin-top: -50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="error-container">
+      <h1>Oops! Something went wrong.</h1>
+      <p>We apologize for the inconvenience. Our team has been notified of the issue and will work to resolve it.</p>
+    </div>
+
+    <section class="page_404">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="col-sm-10 col-sm-offset-1 text-center">
+              <div class="four_zero_four_bg">
+                <h1 class="text-center">404</h1>
+              </div>
+
+              <div class="contant_box_404">
+                <h3 class="h2">Looks like you're lost</h3>
+
+                <p>The page you are looking for is not available!</p>
+
+                <a th:href="@{/return-to-main}"><button>Return to Main Page</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
